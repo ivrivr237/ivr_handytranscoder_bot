@@ -2,7 +2,7 @@ import os
 import logging
 import subprocess
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
@@ -78,7 +78,7 @@ updater = Updater(TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 dispatcher.add_handler(CommandHandler('start', start))
 dispatcher.add_handler(CommandHandler('preset', choose_preset))
-dispatcher.add_handler(MessageHandler(Filters.video, video_handler))
+dispatcher.add_handler(MessageHandler(filters.video, video_handler))
 # Add button handler to respond to user's preset selection
 dispatcher.add_handler(CallbackQueryHandler(button_handler))
 
